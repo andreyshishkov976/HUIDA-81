@@ -49,25 +49,30 @@
             // toolStripComboBox1
             // 
             this.toolStripComboBox1.Items.AddRange(new object[] {
-            "Процессор",
-            "Видеокарта",
+            "Системная плата",
             "Чипсет",
-            "Батарея",
             "Биос",
-            "Оперативная память",
+            "Процессор",
             "Кэш",
-            "USB",
+            "Видеокарта",
+            "Оперативная память",
+            "Запущенные процессы",
             "Диск",
             "Логические диски",
+            "Монитор",
             "Клавиатура",
+            "Мышь",
+            "USB",
             "Сеть",
-            "Пользователи"});
+            "Пользователи",
+            "Батарея"});
             this.toolStripComboBox1.Name = "toolStripComboBox1";
             this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
             this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
             // 
             // listView1
             // 
+            this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.propName,
             this.propValue});

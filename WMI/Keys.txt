@@ -1,13 +1,17 @@
-﻿Процессор - Win32_Processor
-Видеокарта - Win32_VideoController
+﻿Системная плата - Win32_BaseBoard
 Чипсет - Win32_IDEController
-Батарея - Win32_Battery
 Биос - Win32_BIOS
-Оперативная память - Win32_PhysicalMemory
+Процессор - Win32_Processor
 Кэш - Win32_CacheMemory
-USB - Win32_USBController
+Видеокарта - Win32_VideoController
+Оперативная память - Win32_PhysicalMemory
+Запущенные процессы - Win32_Process
 Диск - Win32_DiskDrive
 Логические диски - Win32_LogicalDisk
+Монитор - Win32_DesktopMonitor
 Клавиатура - Win32_Keyboard
+Мышь - Win32_PointingDevice
+USB - Win32_USBController
 Сеть - Win32_NetworkAdapter
 Пользователи - Win32_Account
+Батарея - Win32_Battery

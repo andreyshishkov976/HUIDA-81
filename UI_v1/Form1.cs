@@ -14,7 +14,7 @@ namespace UI_v1
 
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            HardwareKeys key = HardwareKeys.Win32_Processor;
+            HardwareKeys key = HardwareKeys.Win32_BaseBoard;
             switch (toolStripComboBox1.SelectedItem.ToString())
             {
                 case "Процессор":
@@ -56,8 +56,20 @@ namespace UI_v1
                 case "Пользователи":
                     key = HardwareKeys.Win32_Account;
                     break;
+                case "Системная плата":
+                    key = HardwareKeys.Win32_BaseBoard;
+                    break;
+                case "Запущенные процессы":
+                    key = HardwareKeys.Win32_Process;
+                    break;
+                case "Монитор":
+                    key = HardwareKeys.Win32_DesktopMonitor;
+                    break;
+                case "Мышь":
+                    key = HardwareKeys.Win32_PointingDevice;
+                    break;
                 default:
-                    key = HardwareKeys.Win32_Processor;
+                    key = HardwareKeys.Win32_BaseBoard;
                     break;
             }
             ShowInfo(key, listView1);

@@ -21,7 +21,11 @@ namespace HardwareManager
             Win32_LogicalDisk,
             Win32_Keyboard,
             Win32_NetworkAdapter,
-            Win32_Account
+            Win32_Account,
+            Win32_PointingDevice,
+            Win32_BaseBoard,
+            Win32_DesktopMonitor,
+            Win32_Process
         }
         #endregion Nested Types
 
@@ -38,13 +42,9 @@ namespace HardwareManager
                     
                     foreach (var data in hardwareObject.Properties)
                     {
-                        if (data.Value != null)
+                        if (data.Value != null && data.Value != string.Empty)
                         {
                             report.HardwareProps.Add(new HardwareProp(data.Name, data.Value.ToString()));
-                        }
-                        else
-                        {
-                            report.HardwareProps.Add(new HardwareProp(data.Name, "null"));
                         }
                     }
                     hardwareReport.Add(report);
