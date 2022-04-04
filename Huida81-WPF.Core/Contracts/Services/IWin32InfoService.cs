@@ -9,8 +9,8 @@ namespace Huida81_WPF.Core.Contracts.Services
 {
     public interface IWin32InfoService
     {
-        Task<ICollection<Win32Info>> GetGridDataAsync();
+        Task<ICollection<Win32Process>> GetWin32ProcessDataAsync();
 
-        Task<ICollection<Win32Info>> GetListDetailsDataAsync(Win32InfoKey key);
+        Task<ICollection<Win32Info>> GetWin32InfoDataAsync(Win32InfoKey key);
     }
 }

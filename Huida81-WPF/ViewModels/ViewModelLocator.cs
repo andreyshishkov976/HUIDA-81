@@ -71,7 +71,6 @@ namespace Huida81_WPF.ViewModels
             SimpleIoc.Default.Register<IApplicationInfoService, ApplicationInfoService>();
             SimpleIoc.Default.Register<ISystemService, SystemService>();
             SimpleIoc.Default.Register<IFileService, FileService>();
-            SimpleIoc.Default.Register<ISampleDataService, SampleDataService>();
             SimpleIoc.Default.Register<IWin32InfoService, Win32InfoService>();
 
             // Services

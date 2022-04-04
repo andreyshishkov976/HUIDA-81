@@ -33,7 +33,7 @@ namespace Huida81_WPF.ViewModels
         {
             Win32InfoItems.Clear();
 
-            var data = await _win32InfoService.GetListDetailsDataAsync(Win32InfoKey.Win32_BaseBoard);
+            var data = await _win32InfoService.GetWin32InfoDataAsync(Win32InfoKey.Win32_BaseBoard);
 
             foreach (var item in data)
             {

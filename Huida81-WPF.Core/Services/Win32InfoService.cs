@@ -11,22 +11,37 @@ namespace Huida81_WPF.Core.Services
 {
     public class Win32InfoService : IWin32InfoService
     {
-        public Task<ICollection<Win32Info>> GetGridDataAsync()
-        {
-            throw new NotImplementedException();
-        }
+        public ManagementObjectSearcher _objectSearcher = new ManagementObjectSearcher();
 
-        public async Task<ICollection<Win32Info>> GetListDetailsDataAsync(Win32InfoKey key)
+        public async Task<ICollection<Win32Process>> GetWin32ProcessDataAsync()
         {
             await Task.CompletedTask;
-            return await Task.Run(()=>GetWin32Info(key));
+            return await Task.Run(() => GetWin32Processes());
+
         }
 
-        private ICollection<Win32Info> GetWin32Info(Win32InfoKey win32InfoKey)
+        private ICollection<Win32Process> GetWin32Processes()
         {
-            ManagementObjectSearcher objectSearcher = new ManagementObjectSearcher($@"SELECT * FROM {win32InfoKey}");
-            List<Win32Info> infoGroups = new List<Win32Info>();
-            foreach (ManagementObject hardwareObject in objectSearcher.Get())
+            _objectSearcher.Query.QueryString = $@"SELECT * FROM Win32_Process";
+            ICollection<Win32Process> win32Processes = new List<Win32Process>();
+            foreach (ManagementObject hardwareObject in _objectSearcher.Get())
+            {
+                win32Processes.Add(new Win32Process(hardwareObject));
+            }
+            return win32Processes;
+        }
+
+        public async Task<ICollection<Win32Info>> GetWin32InfoDataAsync(Win32InfoKey key)
+        {
+            await Task.CompletedTask;
+            return await Task.Run(()=>GetWin32Infos(key));
+        }
+
+        private ICollection<Win32Info> GetWin32Infos(Win32InfoKey win32InfoKey)
+        {
+            _objectSearcher.Query.QueryString = $@"SELECT * FROM {win32InfoKey}";
+            ICollection<Win32Info> infoGroups = new List<Win32Info>();
+            foreach (ManagementObject hardwareObject in _objectSearcher.Get())
             {
                 var infoGroup = new Win32Info(hardwareObject["Name"].ToString(), hardwareObject["Description"].ToString());
 

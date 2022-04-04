@@ -32,23 +32,21 @@
                         Remove this column definitions and define columns for your data.
                         Consider adding header properties to Resources.resw
                     -->
-                    <DataGridTextColumn Binding="{Binding OrderID}" Header="OrderID" />
-                    <DataGridTextColumn Binding="{Binding OrderDate}" Header="OrderDate" />
-                    <DataGridTextColumn Binding="{Binding Company}" Header="Company" />
-                    <DataGridTextColumn Binding="{Binding ShipTo}" Header="ShipTo" />
-                    <DataGridTextColumn Binding="{Binding OrderTotal}" Header="OrderTotal" />
-                    <DataGridTextColumn Binding="{Binding Status}" Header="Status" />
-                    <DataGridTemplateColumn Header="Symbol">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock
-                                    Margin="{StaticResource SmallLeftRightMargin}"
-                                    HorizontalAlignment="Left"
-                                    Style="{StaticResource SmallIconStyle}"
-                                    Text="{Binding Symbol}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Binding="{Binding ProcessId}" Header="Process Id" />
+                    <DataGridTextColumn Binding="{Binding ParentProcessId}" Header="Parent Process Id" />
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" />
+                    <DataGridTextColumn Binding="{Binding KernelModeTime}" Header="Kernel Mode Time" />
+                    <DataGridTextColumn Binding="{Binding PageFileUsage}" Header="Page File Usage" />
+                    <DataGridTextColumn Binding="{Binding PeakPageFileUsage}" Header="Peak Page File Usage" />
+                    <DataGridTextColumn Binding="{Binding PrivatePageCount}" Header="Private Page Count" />
+                    <DataGridTextColumn Binding="{Binding VirtualSize}" Header="Virtual Size" />
+                    <DataGridTextColumn Binding="{Binding PeakVirtualSize}" Header="Peak Virtual Size" />
+                    <DataGridTextColumn Binding="{Binding WorkingSetSize}" Header="Working Set Size" />
+                    <DataGridTextColumn Binding="{Binding PeakWorkingSetSize}" Header="Peak Working Set Size" />
+                    <DataGridTextColumn Binding="{Binding Priority}" Header="Priority" />
+                    <DataGridTextColumn Binding="{Binding ReadOperationCount}" Header="Read Operation Count" />
+                    <DataGridTextColumn Binding="{Binding ReadTransferCount}" Header="Read Transfer Count" />
+                    <DataGridTextColumn Binding="{Binding ThreadCount}" Header="Thread Count" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
