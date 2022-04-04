@@ -7,7 +7,7 @@ namespace WMI
 {
     public class WmiHandler
     {
-        public List<string> HardwareKeys = new()
+        public List<string> HardwareKeys = new List<string>()
         {
             "Win32_Processor",
             "Win32_VideoController",
@@ -30,8 +30,8 @@ namespace WMI
 
         public List<Win32InfoGroup> GetWin32InfoReportByKey(string hardwareKey)
         {
-            ManagementObjectSearcher objectSearcher = new($@"SELECT * FROM {hardwareKey}");
-            List<Win32InfoGroup> infoGroups = new();
+            ManagementObjectSearcher objectSearcher = new ManagementObjectSearcher($@"SELECT * FROM {hardwareKey}");
+            List<Win32InfoGroup> infoGroups = new List<Win32InfoGroup>();
             foreach (ManagementObject hardwareObject in objectSearcher.Get())
             {
                 var infoGroup = new Win32InfoGroup(hardwareObject["Name"].ToString());
@@ -50,13 +50,13 @@ namespace WMI
 
         public void GetWin32InfoReportJson(string savePath)
         {
-            List<Win32InfoReport> infoReports = new();
+            List<Win32InfoReport> infoReports = new List<Win32InfoReport>();
             foreach (var key in HardwareKeys)
             {
                 infoReports.Add(new Win32InfoReport(key, GetWin32InfoReportByKey(key)));
             }
             string json = JsonConvert.SerializeObject(infoReports, Formatting.Indented);
-            StreamWriter writer = new(savePath, false);
+            StreamWriter writer = new StreamWriter(savePath, false);
             writer.WriteAsync(json);
         }
     }

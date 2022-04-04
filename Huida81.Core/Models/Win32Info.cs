@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Huida81_WPF.Core.Models
+namespace Huida81.Core.Models
 {
     public class Win32Info
     {
@@ -14,7 +14,7 @@ namespace Huida81_WPF.Core.Models
         }
 
         public string Name { get; set; }
-        
+
         public string Description { get; set; }
 
         public List<Win32InfoDetail> InfoDetails { get; set; }

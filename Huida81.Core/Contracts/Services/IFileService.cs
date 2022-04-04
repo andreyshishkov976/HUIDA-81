@@ -1,4 +1,4 @@
-﻿namespace Huida81_WPF.Core.Contracts.Services
+﻿namespace Huida81.Core.Contracts.Services
 {
     public interface IFileService
     {

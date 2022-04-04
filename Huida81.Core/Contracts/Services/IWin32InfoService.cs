@@ -1,11 +1,11 @@
-﻿using Huida81_WPF.Core.Enums;
-using Huida81_WPF.Core.Models;
+﻿using Huida81.Core.Enums;
+using Huida81.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Huida81_WPF.Core.Contracts.Services
+namespace Huida81.Core.Contracts.Services
 {
     public interface IWin32InfoService
     {

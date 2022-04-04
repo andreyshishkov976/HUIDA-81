@@ -1,18 +1,14 @@
-﻿using System;
-using System.Windows.Controls;
-
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
-
+using Huida81.Core.Contracts.Services;
+using Huida81.Core.Services;
 using Huida81_WPF.Contracts.Services;
 using Huida81_WPF.Contracts.Views;
-using Huida81_WPF.Core.Contracts.Services;
-using Huida81_WPF.Core.Services;
 using Huida81_WPF.Models;
 using Huida81_WPF.Services;
 using Huida81_WPF.Views;
-
 using Microsoft.Extensions.Configuration;
+using System.Windows.Controls;
 
 namespace Huida81_WPF.ViewModels
 {

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.ObjectModel;
-
-using GalaSoft.MvvmLight;
-
+﻿using GalaSoft.MvvmLight;
+using Huida81.Core.Contracts.Services;
+using Huida81.Core.Models;
 using Huida81_WPF.Contracts.ViewModels;
-using Huida81_WPF.Core.Contracts.Services;
-using Huida81_WPF.Core.Models;
+using System.Collections.ObjectModel;
 
 namespace Huida81_WPF.ViewModels
 {

@@ -1,80 +1,64 @@
-﻿using System;
+﻿using Huida81.Core.Contracts.Services;
+using Huida81.Core.Enums;
+using Huida81.Core.Services;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-using WMI;
 
-namespace UI_v1
+namespace Huida81_WinForms
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        private WmiHandler handler;
-        private SaveFileDialog fileDialog;
+        private IWin32InfoService _infoService;
+        private SaveFileDialog _fileDialog;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
-            handler = new();
-            fileDialog = new();
+            _infoService = new Win32InfoService();
+            _fileDialog = new SaveFileDialog();
         }
 
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string key = handler.HardwareKeys[13];
+            Win32InfoKey key = Win32InfoKey.Win32_BaseBoard;
             switch (toolStripComboBox1.SelectedItem.ToString())
             {
                 case "Процессор":
-                    key = handler.HardwareKeys[0];
+                    key = Win32InfoKey.Win32_Processor;
                     break;
                 case "Видеокарта":
-                    key = handler.HardwareKeys[1];
-                    break;
-                case "Чипсет":
-                    key = handler.HardwareKeys[2];
-                    break;
-                case "Батарея":
-                    key = handler.HardwareKeys[3];
+                    key = Win32InfoKey.Win32_VideoController;
                     break;
                 case "Биос":
-                    key = handler.HardwareKeys[4];
-                    break;
-                case "Оперативная память":
-                    key = handler.HardwareKeys[5];
-                    break;
-                case "Кэш":
-                    key = handler.HardwareKeys[6];
-                    break;
-                case "USB":
-                    key = handler.HardwareKeys[7];
+                    key = Win32InfoKey.Win32_BIOS;
                     break;
                 case "Диск":
-                    key = handler.HardwareKeys[8];
+                    key = Win32InfoKey.Win32_DiskDrive;
                     break;
                 case "Логические диски":
-                    key = handler.HardwareKeys[9];
+                    key = Win32InfoKey.Win32_LogicalDisk;
                     break;
                 case "Клавиатура":
-                    key = handler.HardwareKeys[10];
+                    key = Win32InfoKey.Win32_Keyboard;
                     break;
                 case "Сеть":
-                    key = handler.HardwareKeys[11];
-                    break;
-                case "Пользователи":
-                    key = handler.HardwareKeys[12];
+                    key = Win32InfoKey.Win32_NetworkAdapter;
                     break;
                 case "Системная плата":
-                    key = handler.HardwareKeys[13];
+                    key = Win32InfoKey.Win32_BaseBoard;
                     break;
                 case "Запущенные процессы":
-                    key = handler.HardwareKeys[14];
+                    key = Win32InfoKey.Win32_Process;
                     break;
                 case "Монитор":
-                    key = handler.HardwareKeys[15];
+                    key = Win32InfoKey.Win32_DesktopMonitor;
                     break;
                 case "Мышь":
-                    key = handler.HardwareKeys[16];
+                    key = Win32InfoKey.Win32_PointingDevice;
                     break;
                 default:
-                    key = handler.HardwareKeys[17];
+                    key = Win32InfoKey.Win32_BaseBoard;
                     break;
             }
             ShowInfo(key, listView1);
@@ -86,23 +70,23 @@ namespace UI_v1
 
         }
 
-        private void ShowInfo(string key, ListView list)
+        private async void ShowInfo(Win32InfoKey key, ListView list)
         {
             list.Items.Clear();
             try
             {
-                var report = handler.GetWin32InfoReportByKey(key);
-                foreach (var hardware in report)
+                var report = await _infoService.GetWin32InfoDataAsync(key);
+                foreach (var win32Info in report)
                 {
-                    if (hardware is null || hardware.InfoProps.Count == 0)
+                    if (win32Info is null || win32Info.InfoDetails.Count == 0)
                     {
                         MessageBox.Show("Не удалось получить информацию", "Ошибка",
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     ListViewGroup listViewGroup;
-                    listViewGroup = list.Groups.Add(hardware.Group, hardware.Group);
-                    foreach (var prop in hardware.InfoProps)
+                    listViewGroup = list.Groups.Add(win32Info.Name, win32Info.Name);
+                    foreach (var prop in win32Info.InfoDetails)
                     {
                         ListViewItem item = new ListViewItem(listViewGroup);
                         if (list.Items.Count % 2 == 0)
@@ -124,8 +108,8 @@ namespace UI_v1
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            fileDialog.ShowDialog();
-            handler.GetWin32InfoReportJson(fileDialog.FileName);
+            _fileDialog.ShowDialog();
+            //do it later
         }
     }
 }

@@ -1,13 +1,10 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using Huida81.Core.Contracts.Services;
+using Huida81.Core.Enums;
+using Huida81.Core.Models;
+using Huida81_WPF.Contracts.ViewModels;
 using System.Collections.ObjectModel;
 using System.Linq;
-
-using GalaSoft.MvvmLight;
-
-using Huida81_WPF.Contracts.ViewModels;
-using Huida81_WPF.Core.Contracts.Services;
-using Huida81_WPF.Core.Enums;
-using Huida81_WPF.Core.Models;
 
 namespace Huida81_WPF.ViewModels
 {

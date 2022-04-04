@@ -1,11 +1,10 @@
 ﻿using System.IO;
 using System.Text;
-
-using Huida81_WPF.Core.Contracts.Services;
+using Huida81.Core.Contracts.Services;
 
 using Newtonsoft.Json;
 
-namespace Huida81_WPF.Core.Services
+namespace Huida81.Core.Services
 {
     public class FileService : IFileService
     {

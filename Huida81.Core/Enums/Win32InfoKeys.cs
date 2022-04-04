@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Huida81_WPF.Core.Enums
+namespace Huida81.Core.Enums
 {
     public enum Win32InfoKey
     {

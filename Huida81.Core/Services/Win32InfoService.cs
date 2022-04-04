@@ -1,13 +1,11 @@
-﻿using Huida81_WPF.Core.Contracts.Services;
-using Huida81_WPF.Core.Enums;
-using Huida81_WPF.Core.Models;
-using System;
+﻿using Huida81.Core.Contracts.Services;
+using Huida81.Core.Enums;
+using Huida81.Core.Models;
 using System.Collections.Generic;
 using System.Management;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Huida81_WPF.Core.Services
+namespace Huida81.Core.Services
 {
     public class Win32InfoService : IWin32InfoService
     {
@@ -34,7 +32,7 @@ namespace Huida81_WPF.Core.Services
         public async Task<ICollection<Win32Info>> GetWin32InfoDataAsync(Win32InfoKey key)
         {
             await Task.CompletedTask;
-            return await Task.Run(()=>GetWin32Infos(key));
+            return await Task.Run(() => GetWin32Infos(key));
         }
 
         private ICollection<Win32Info> GetWin32Infos(Win32InfoKey win32InfoKey)

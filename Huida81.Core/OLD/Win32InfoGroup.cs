@@ -7,7 +7,7 @@ namespace WMI
         public Win32InfoGroup(string group)
         {
             Group = group;
-            InfoProps = new();
+            InfoProps = new List<Win32InfoProp>();
         }
 
         public string Group { get; set; }

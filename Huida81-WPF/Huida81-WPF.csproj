@@ -15,7 +15,7 @@
     <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Huida81-WPF.Core\Huida81-WPF.Core.csproj" />
+    <ProjectReference Include="..\Huida81.Core\Huida81.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
