@@ -6,40 +6,41 @@ using GalaSoft.MvvmLight;
 
 using Huida81_WPF.Contracts.ViewModels;
 using Huida81_WPF.Core.Contracts.Services;
+using Huida81_WPF.Core.Enums;
 using Huida81_WPF.Core.Models;
 
 namespace Huida81_WPF.ViewModels
 {
     public class MouseViewModel : ViewModelBase, INavigationAware
     {
-        private readonly ISampleDataService _sampleDataService;
-        private SampleOrder _selected;
+        private readonly IWin32InfoService _win32InfoService;
+        private Win32Info _selected;
 
-        public SampleOrder Selected
+        public Win32Info Selected
         {
             get { return _selected; }
             set { Set(ref _selected, value); }
         }
 
-        public ObservableCollection<SampleOrder> SampleItems { get; private set; } = new ObservableCollection<SampleOrder>();
+        public ObservableCollection<Win32Info> Win32InfoItems { get; private set; } = new ObservableCollection<Win32Info>();
 
-        public MouseViewModel(ISampleDataService sampleDataService)
+        public MouseViewModel(IWin32InfoService win32InfoService)
         {
-            _sampleDataService = sampleDataService;
+            _win32InfoService = win32InfoService;
         }
 
         public async void OnNavigatedTo(object parameter)
         {
-            SampleItems.Clear();
+            Win32InfoItems.Clear();
 
-            var data = await _sampleDataService.GetListDetailsDataAsync();
+            var data = await _win32InfoService.GetListDetailsDataAsync(Win32InfoKey.Win32_PointingDevice);
 
             foreach (var item in data)
             {
-                SampleItems.Add(item);
+                Win32InfoItems.Add(item);
             }
 
-            Selected = SampleItems.First();
+            Selected = Win32InfoItems.First();
         }
 
         public void OnNavigatedFrom()

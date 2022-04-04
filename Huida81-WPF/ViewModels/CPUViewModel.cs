@@ -6,6 +6,7 @@ using GalaSoft.MvvmLight;
 
 using Huida81_WPF.Contracts.ViewModels;
 using Huida81_WPF.Core.Contracts.Services;
+using Huida81_WPF.Core.Enums;
 using Huida81_WPF.Core.Models;
 
 namespace Huida81_WPF.ViewModels
@@ -13,15 +14,15 @@ namespace Huida81_WPF.ViewModels
     public class CPUViewModel : ViewModelBase, INavigationAware
     {
         private readonly IWin32InfoService _win32InfoService;
-        private Win32CpuInfo _selected;
+        private Win32Info _selected;
 
-        public Win32CpuInfo Selected
+        public Win32Info Selected
         {
             get { return _selected; }
             set { Set(ref _selected, value); }
         }
 
-        public ObservableCollection<Win32CpuInfo> SampleItems { get; private set; } = new ObservableCollection<Win32CpuInfo>();
+        public ObservableCollection<Win32Info> Win32InfoItems { get; private set; } = new ObservableCollection<Win32Info>();
 
         public CPUViewModel(IWin32InfoService win32InfoService)
         {
@@ -30,16 +31,16 @@ namespace Huida81_WPF.ViewModels
 
         public async void OnNavigatedTo(object parameter)
         {
-            SampleItems.Clear();
+            Win32InfoItems.Clear();
 
-            var data = await _win32InfoService.GetListDetailsDataAsync();
+            var data = await _win32InfoService.GetListDetailsDataAsync(Win32InfoKey.Win32_Processor);
 
             foreach (var item in data)
             {
-                SampleItems.Add(item);
+                Win32InfoItems.Add(item);
             }
 
-            Selected = SampleItems.First();
+            Selected = Win32InfoItems.First();
         }
 
         public void OnNavigatedFrom()

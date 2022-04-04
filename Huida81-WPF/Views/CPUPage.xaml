@@ -16,12 +16,6 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <!--<TextBlock
-                    Grid.Column="0"
-                    Text="{Binding Symbol}"
-                    Style="{StaticResource MediumIconStyle}"
-                    Margin="{StaticResource XSmallLeftMargin}"
-                    AutomationProperties.Name="List item icon" />-->
                 <StackPanel
                     Grid.Column="1"
                     Margin="{StaticResource SmallLeftMargin}"
@@ -39,10 +33,6 @@
                 HorizontalAlignment="Stretch">
                 <StackPanel HorizontalAlignment="Left" Margin="{StaticResource MediumLeftTopRightBottomMargin}">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                        <!--<TextBlock
-                            Text="{Binding Symbol}"
-                            Style="{StaticResource BigIconStyle}"
-                            AutomationProperties.Name="Detail icon" />-->
                         <TextBlock
                             Margin="{StaticResource SmallLeftMargin}"
                             VerticalAlignment="Center"
@@ -56,186 +46,12 @@
                         <TextBlock
                             Style="{StaticResource BodyTextStyle}"
                             Text="{Binding Description, Mode=OneWay}" />
-                        <DataGrid ItemsSource="{Binding}">
+                        <DataGrid Margin="{StaticResource SmallTopMargin}" Width="Auto" ItemsSource="{Binding InfoDetails}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" GridLinesVisibility="None" AutoGenerateColumns="False">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Name" Width="*"/>
-                                <DataGridTextColumn Header="Value" Width="*"/>
+                                <DataGridTextColumn Width="Auto" Header="Name" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Width="*" Header="Value" Binding="{Binding Value}"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <!--<TextBlock
-                            Margin="{StaticResource SmallTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="Current clock speed" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding CurrentClockSpeed, Mode=OneWay}" />
-                        <TextBlock
-                            Margin="{StaticResource SmallTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="CurrentVoltage" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding CurrentVoltage, Mode=OneWay}" />
-                        <TextBlock
-                            Margin="{StaticResource SmallTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="DeviceID" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding DeviceID, Mode=OneWay}" />
-                        <TextBlock
-                            Margin="{StaticResource SmallTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="ExtClock" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding ExtClock, Mode=OneWay}" />
-                        <TextBlock
-                            Margin="{StaticResource MediumTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="Family" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding Family, Mode=OneWay}"/>
-                        <TextBlock
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="L2CacheSize" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding L2CacheSize, Mode=OneWay}" />
-                        <TextBlock
-                            Margin="{StaticResource SmallTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="L2CacheSpeed" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding L2CacheSpeed, Mode=OneWay}" />
-                        <TextBlock
-                            Margin="{StaticResource SmallTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="L3CacheSize" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding L3CacheSize, Mode=OneWay}" />
-                        <TextBlock
-                            Margin="{StaticResource SmallTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="L3CacheSpeed" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding L3CacheSpeed, Mode=OneWay}" />
-                        <TextBlock
-                            Margin="{StaticResource SmallTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="Manufacturer" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding Manufacturer, Mode=OneWay}" />
-                        <TextBlock
-                            Margin="{StaticResource MediumTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="NumberOfCores" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding NumberOfCores, Mode=OneWay}"/>
-                        <TextBlock
-                            Margin="{StaticResource MediumTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="NumberOfEnabledCore" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding NumberOfEnabledCore, Mode=OneWay}"/>
-                        <TextBlock
-                            Margin="{StaticResource MediumTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="NumberOfLogicalProcessors" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding NumberOfLogicalProcessors, Mode=OneWay}"/>
-                        <TextBlock
-                            Margin="{StaticResource MediumTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="ProcessorId" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding ProcessorId, Mode=OneWay}"/>
-                        <TextBlock
-                            Margin="{StaticResource MediumTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="Revision" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding Revision, Mode=OneWay}"/>
-                        <TextBlock
-                            Margin="{StaticResource MediumTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="Role" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding Role, Mode=OneWay}"/>
-                        <TextBlock
-                            Margin="{StaticResource MediumTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="SerialNumber" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding SerialNumber, Mode=OneWay}"/>
-                        <TextBlock
-                            Margin="{StaticResource MediumTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="SocketDesignation" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding SocketDesignation, Mode=OneWay}"/>
-                        <TextBlock
-                            Margin="{StaticResource MediumTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="Status" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding Status, Mode=OneWay}"/>
-                        <TextBlock
-                            Margin="{StaticResource MediumTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="Stepping" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding Stepping, Mode=OneWay}"/>
-                        <TextBlock
-                            Margin="{StaticResource MediumTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="SystemName" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding SystemName, Mode=OneWay}"/>
-                        <TextBlock
-                            Margin="{StaticResource MediumTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="ThreadCount" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding ThreadCount, Mode=OneWay}"/>
-                        <TextBlock
-                            Margin="{StaticResource MediumTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="Version" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding Version, Mode=OneWay}"/>
-                        <TextBlock
-                            Margin="{StaticResource MediumTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="VirtualizationFirmwareEnabled" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding VirtualizationFirmwareEnabled, Mode=OneWay}"/>
-                        <TextBlock
-                            Margin="{StaticResource MediumTopMargin}"
-                            Style="{StaticResource SubtitleTextStyle}"
-                            Text="VMMonitorModeExtensions" />
-                        <TextBlock
-                            Style="{StaticResource BodyTextStyle}"
-                            Text="{Binding VMMonitorModeExtensions, Mode=OneWay}"/>-->
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>
@@ -258,7 +74,7 @@
             <ListView
                 Grid.Row="1"
                 AutomationProperties.Name="{x:Static properties:Resources.CPUListDescription}"
-                ItemsSource="{Binding SampleItems}"
+                ItemsSource="{Binding Win32InfoItems}"
                 ItemTemplate="{StaticResource ItemTemplate}"
                 SelectedItem="{Binding Selected, Mode=TwoWay}" />
         </Grid>
