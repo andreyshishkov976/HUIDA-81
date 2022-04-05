@@ -1,15 +1,13 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using Huida81.Core.Contracts.Services;
+using Huida81_WPF.Contracts.Services;
+using Huida81_WPF.Properties;
+using MahApps.Metro.Controls;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
-
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-
-using Huida81_WPF.Contracts.Services;
-using Huida81_WPF.Properties;
-
-using MahApps.Metro.Controls;
 
 namespace Huida81_WPF.ViewModels
 {
@@ -67,7 +65,7 @@ namespace Huida81_WPF.ViewModels
 
         public ICommand UnloadedCommand => _unloadedCommand ?? (_unloadedCommand = new RelayCommand(OnUnloaded));
 
-        public ShellViewModel(INavigationService navigationService)
+        public ShellViewModel(INavigationService navigationService, IWin32InfoService infoService)
         {
             _navigationService = navigationService;
         }

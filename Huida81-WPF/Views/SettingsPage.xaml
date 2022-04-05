@@ -101,6 +101,23 @@
                             Text="{x:Static properties:Resources.SettingsPagePrivacyStatementText}" />
                     </Hyperlink>
                 </TextBlock>
+
+                <TextBlock
+                    Margin="{StaticResource SmallTopMargin}"
+                    Style="{StaticResource SubtitleTextStyle}"
+                    Text="{x:Static properties:Resources.SettingsSaveReportTitle}" />
+                <TextBlock
+                    Margin="{StaticResource XSmallTopMargin}"
+                    Style="{StaticResource BodyTextStyle}"
+                    Text="{x:Static properties:Resources.SettingsSaveReportAboutText}" />
+                <TextBlock
+                    Margin="{StaticResource XSmallTopMargin}"
+                    Style="{StaticResource BodyTextStyle}"
+                    Text="{x:Static properties:Resources.SettingsSaveReportWarningText}" />
+                <Button Margin="{StaticResource SmallTopMargin}" 
+                        Content="Save as" 
+                        Command="{Binding SaveWin32Info}" 
+                        Width="80" HorizontalAlignment="Left"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>

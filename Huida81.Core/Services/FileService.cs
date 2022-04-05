@@ -26,8 +26,11 @@ namespace Huida81.Core.Services
             {
                 Directory.CreateDirectory(folderPath);
             }
-
-            var fileContent = JsonConvert.SerializeObject(content);
+            string fileContent = string.Empty;
+            if (!content.GetType().Equals(typeof(string)))
+                fileContent = JsonConvert.SerializeObject(content);
+            else
+                fileContent = content.ToString();
             File.WriteAllText(Path.Combine(folderPath, fileName), fileContent, Encoding.UTF8);
         }
 

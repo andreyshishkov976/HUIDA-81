@@ -35,5 +35,20 @@ namespace Huida81.Core.Models
                 }
             }
         }
+
+        public override string ToString()
+        {
+            string win32ProcessString = string.Empty;
+            win32ProcessString+= $"Name: {Name}\r\nProcessId: {ProcessId}\r\nDetails:\r\n";
+            for (int i = 0; i < 61; i++)
+                win32ProcessString += "-";
+            foreach (var prop in GetType().GetProperties())
+            {
+                win32ProcessString += $"\r\n|{prop.Name, 18}|{prop.GetValue(this),40}|\r\n";
+                for (int i = 0; i < 61; i++)
+                    win32ProcessString += "-";
+            }
+            return win32ProcessString + "\r\n";
+        }
     }
 }
