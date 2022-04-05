@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Huida81.Core\Huida81.Core.csproj" />
-    <ProjectReference Include="..\WMI\Huida81.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
